@@ -40,15 +40,6 @@ public class HibernateUtil {
 	}
 
 	public static <T> void persist(T entity) {
-		// Session session = HibernateUtil.openSession();
-		// try {
-		// session.beginTransaction();
-		// session.save(entity);
-		// session.getTransaction().commit();
-		// } finally {
-		// session.close();
-		// }
-
 		Session session = HibernateUtil.getCurrentSession();
 		session.beginTransaction();
 		session.save(entity);
@@ -123,7 +114,7 @@ public class HibernateUtil {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static String assembleHql(Map<String, Object> filter) throws Exception {
 		if (filter == null) {
-			throw new Exception("无效的filter");
+			throw new Exception("无效的Filter");
 		}
 		if (filter != null && !filter.containsKey(ClassKey)) {
 			throw new Exception("找不到ClassKey");
